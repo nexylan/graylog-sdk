@@ -1,0 +1,30 @@
+{
+    "name": "nexylan/graylog-sdk",
+    "description": "A PHP sdk to communicate with the Graylog REST API",
+    "keywords": ["Graylog", "API", "Symfony"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sullivan SENECHAL",
+            "email": "soullivaneuh@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": { "Nexy\\Graylog\\": "src" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Nexy\\Graylog\\Tests\\": "tests" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.x-dev"
+        }
+    }
+}
