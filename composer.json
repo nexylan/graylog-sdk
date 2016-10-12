@@ -13,6 +13,9 @@
     "require": {
         "php": "^7.0"
     },
+    "require-dev": {
+        "sllh/php-cs-fixer-styleci-bridge": "^2.1"
+    },
     "config": {
         "sort-packages": true
     },
