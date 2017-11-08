@@ -29,8 +29,8 @@
     "suggest": {
         "ext-solr": "For Lucene query escaping.",
         "internations/solr-utils": "For Lucene query escaping.",
-        "symfony/http-kernel": "For Symfony integration as a bundle",
-        "symfony/dependency-injection": "For Symfony integration as a bundle"
+        "symfony/dependency-injection": "For Symfony integration as a bundle",
+        "symfony/http-kernel": "For Symfony integration as a bundle"
     },
     "minimum-stability": "beta",
     "prefer-stable": true,
