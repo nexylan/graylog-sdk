@@ -11,6 +11,7 @@
 
 namespace Nexy\Graylog\Api;
 
+use Nexy\Graylog\Api\Search\Absolute;
 use Nexy\Graylog\Api\Search\Keyword;
 use Nexy\Graylog\Api\Search\Relative;
 
@@ -19,6 +20,14 @@ use Nexy\Graylog\Api\Search\Relative;
  */
 final class Search extends AbstractApi
 {
+    /**
+     * @return Absolute
+     */
+    public function absolute()
+    {
+        return new Absolute($this->graylog);
+    }
+
     /**
      * @return Keyword
      */
