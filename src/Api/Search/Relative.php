@@ -89,6 +89,33 @@ final class Relative extends AbstractApi
     }
 
     /**
+     * @param string      $query
+     * @param string      $field
+     * @param string      $interval
+     * @param int         $range
+     * @param string|null $filter
+     * @param bool        $cardinality
+     *
+     * @return array
+     */
+    public function fieldHistogram(string $query, string $field, string $interval, int $range, string $filter = null, bool $cardinality = false)
+    {
+        $parameters = [
+            'query' => $query,
+            'field' => $field,
+            'interval' => $interval,
+            'range' => $range,
+            'cardinality' => $cardinality ? 'true' : 'false',
+        ];
+
+        if (null !== $filter) {
+            $parameters['filter'] = $filter;
+        }
+
+        return $this->get('/fieldhistogram', $parameters);
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function getApiBasePath()
