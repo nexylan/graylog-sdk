@@ -5,12 +5,14 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="nexy_graylog.sdk" class="Nexy\Graylog\Graylog">
+        <service id="Nexy\Graylog\Graylog">
             <argument>%nexy_graylog.options%</argument>
             <call method="auth">
                 <argument>%nexy_graylog.auth.user%</argument>
                 <argument>%nexy_graylog.auth.password%</argument>
             </call>
         </service>
+
+        <service id="nexy_graylog.sdk" alias="Nexy\Graylog\Graylog" />
     </services>
 </container>
