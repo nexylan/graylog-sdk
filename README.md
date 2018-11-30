@@ -31,4 +31,61 @@ First of all, you need to require this library through Composer:
 composer require nexylan/graylog-sdk
 ```
 
-After this, you can use it as is.
+## Usage
+
+```php
+$graylog = new \Nexy\Graylog\Graylog([
+    'base_uri' => 'https://your.graylog.instance.com/api'
+]);
+
+// You may authenticate with API token:
+$graylog->auth('YourApiToken');
+// Or user credentials:
+$graylog->auth('YourGraylogUsername', 'YourGrayLogPassword');
+
+// Then, start using the API:
+$result = $graylog->search()->relative()->terms('file', 'source: host.com', 0);
+```
+
+### Symfony integration
+
+Activate the bundle:
+
+```php
+// config/bundles.php
+
+return [
+    Nexy\Graylog\Bridge\Symfony\Bundle\NexyGraylogBundle::class => ['all' => true],
+];
+```
+
+Add the configuration file:
+
+```yaml
+// config/packages/nexy_graylog.yaml
+
+nexy_graylog:
+    options:
+        base_uri:             ~ # Required
+    auth:
+
+        # Can be a username or a token.
+        user:                 ~ # Required
+
+        # Required only for username auth.
+        password:             null
+```
+
+Then, inject the Graylog service thanks to autowiring:
+
+```php
+class MyService
+{
+    private $graylog;
+
+    public function __construct(Nexy\Graylog\Graylog $graylog)
+    {
+        $this->graylog = $graylog;
+    }
+}
+```
