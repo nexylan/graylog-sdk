@@ -88,7 +88,6 @@ final class Graylog
         $this->addPlugin(new Plugin\HeaderDefaultsPlugin([
             'Accept' => 'application/json',
         ]));
-        $this->addPlugin(new Plugin\ErrorPlugin());
     }
 
     /**
