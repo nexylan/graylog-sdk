@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nexy\Graylog\Api;
 
+use Nexy\Graylog\Exception\HttpClientException;
 use Nexy\Graylog\Graylog;
 use Psr\Http\Message\ResponseInterface;
 
@@ -73,6 +74,10 @@ abstract class AbstractApi
 
     private function parseResponseContent(ResponseInterface $response)
     {
+        $statusCode = $response->getStatusCode();
+        if ($statusCode >= 400 || $statusCode < 200) {
+            throw new HttpClientException($response);
+        }
         return json_decode($response->getBody()->getContents(), true);
     }
 }
