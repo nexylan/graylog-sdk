@@ -87,6 +87,43 @@ final class Relative extends AbstractApi
 
         return $this->get('/terms', $parameters);
     }
+    
+    /**
+     * @param string      $field
+     * @param string      $query
+     * @param int         $range
+     * @param int         $size
+     * @param string|null $stackedFields
+     * @param string|null $interval
+     * @param string|null $filter
+     * @param string|null $order
+     *
+     * @return array
+     */
+    public function termsHistogram(string $field, string $query, int $range, int $size, string $stackedFields = null, string $interval = null, string $filter = null, string $order = null)
+    {
+        $parameters = [
+            'field' => $field,
+            'query' => $query,
+            'range' => $range,
+            'size' => $size
+        ];
+
+        if (null !== $stackedFields) {
+            $parameters['stacked_fields'] = $stackedFields;
+        }
+        if (null !== $interval) {
+            $parameters['interval'] = $interval;
+        }
+        if (null !== $filter) {
+            $parameters['filter'] = $filter;
+        }
+        if (null !== $order) {
+            $parameters['order'] = $order;
+        }
+
+        return $this->get('/terms-histogram', $parameters);
+    }
 
     /**
      * @param string      $query
